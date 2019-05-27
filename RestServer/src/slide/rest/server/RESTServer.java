@@ -37,7 +37,7 @@ import java.util.logging.Logger;
  *El campo "total" enviado a la pagina, es enviado sin redondear el numero.
  *
  */
-public class Server {
+public class RESTServer {
 
     private static final String HOSTNAME = "0.0.0.0";
     private static final int PORT = 8001;
@@ -59,12 +59,12 @@ public class Server {
     
     Commands c;
 
-    public Server() {
+    public RESTServer() {
         c = new Commands();
         try {
             conectaConCache();
         } catch (Exception ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RESTServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -102,7 +102,7 @@ public class Server {
                             break;
                     }
             } catch (Exception ex) {
-                Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(RESTServer.class.getName()).log(Level.SEVERE, null, ex);
             } finally {
                 he.close();
             }
@@ -177,10 +177,10 @@ public class Server {
     
      public static void main(String[] args) {
         try {
-            Server server = new Server();
+            RESTServer server = new RESTServer();
             server.inicio(); 
         } catch (IOException ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RESTServer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
